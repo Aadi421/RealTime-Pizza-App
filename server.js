@@ -7,7 +7,7 @@ const expressLayout=require("express-ejs-layouts");
 
 
 
-
+const db = require('./app/config/mongoose');
 
 
 
@@ -18,18 +18,9 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'./resources/views'));
 
 //routes
-app.get('/',(req,res)=>{
-    res.render("home")
-})
-app.get('/cart',(req,res)=>{
-    res.render("customers/cart")
-})
-app.get('/login',(req,res)=>{
-    res.render("auth/login")
-})
-app.get('/register',(req,res)=>{
-    res.render("auth/register")
-})
+
+require('./routes/web')(app);
+
 // server fireup
 app.listen(PORT,()=>{
     console.log(`Yup! My server listening on ${PORT}`);
