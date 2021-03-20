@@ -8,17 +8,12 @@ const ejs=require("ejs");
 const expressLayout=require("express-ejs-layouts");
 const db = require('./app/config/mongoose');
 const session=require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+const passport = require('passport');
+const passportLocal=require('./app/config/passport-local-strategy')
 
-const MongoStore = require('connect-mongo')
 
-
-
-//
-// var mongoStore = new MongoStore({
-//           mongooseConnection: db,
-//             collection: 'sessions'
-// });
-// session config
 app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
@@ -35,12 +30,23 @@ app.use(session({
     
     
 }))
+
+app.use(flash());
+app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
 app.use(express.json());
 
 //global middleware
 app.use((req,res,next)=>{
   res.locals.session=req.session;
   next();
+})
+app.use((req,res,next)=>{
+    res.locals.flash={
+        'success':req.flash('success'),
+        'error':req.flash('error')
+    }
+    next();
 })
 //assets
 app.use(express.static('public'));
@@ -53,8 +59,12 @@ app.set('layout extractScripts', true);
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'./resources/views'));
 
-//routes
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
+
+//routes
 require('./routes/web')(app);
 
 // server fireup

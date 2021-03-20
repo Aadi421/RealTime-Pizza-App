@@ -20,5 +20,16 @@ Add to cart functionality
     -connect a mongoDB
     -use connect-mongo for session store
         -dependencies
-            -mongoDB connect-mongo express-session dotenv
-    -axios to send ajax request
+            -mongoose, connect-mongo, express-session, dotenv
+    -axios to send ajax request 
+        -npm install axios
+    -install notification library npm insatll  noty https://ned.im/noty/#/
+Create login page using route
+Create register page using route
+Build register crud
+    -dependencies express-session dotenv connect-flash
+    -status code article
+Build login using passport
+    -install dependencies passport passport-local express-session
+Create Order controller and link it in server.js
+Create Order view with table for customer and admin

@@ -1,10 +1,10 @@
-const menu=require('../../models/menu')
+const Menu=require('../../models/menu')
 function homeController(){
     return {
          async index(req,res){
             try{
-                let pizzas=await menu.find({});
-                console.log(pizzas);
+                let pizzas=await Menu.find({});
+                // console.log(pizzas);
                 return res.render("home",{
                      pizzas:pizzas
                  });
