@@ -11,7 +11,10 @@ const session=require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
-const passportLocal=require('./app/config/passport-local-strategy')
+const passportLocal=require('./app/config/passport-local-strategy');
+
+const customMware=require('./app/http/middlewares/flash');
+
 
 
 app.use(session({
@@ -31,7 +34,7 @@ app.use(session({
     
 }))
 
-app.use(flash());
+
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(express.json());
@@ -41,13 +44,18 @@ app.use((req,res,next)=>{
   res.locals.session=req.session;
   next();
 })
-app.use((req,res,next)=>{
-    res.locals.flash={
-        'success':req.flash('success'),
-        'error':req.flash('error')
-    }
-    next();
-})
+
+app.use(flash());
+// flash middleware
+
+app.use(customMware.setFlash);
+// app.use((req,res,next)=>{
+//     res.locals.flash={
+//         'success':req.flash('success'),
+//         'error':req.flash('error')
+//     }
+//     next();
+// })
 //assets
 app.use(express.static('public'));
 app.use(expressLayout);

@@ -3,13 +3,17 @@ const bcrypt=require('bcrypt')
 
 // this is a factory function(return a object)
 function authController(){
+    const _getRedirectUrl=(req)=>{
+        return req.user.role==='admin'?'/admin/orders':'/customer/orders'
+    }
+
     return {
         login(req,res){ // login:function (){ ,this is same
             return res.render("auth/login")
         },
         postLogin(req,res){ // login:function (){ ,this is same
             req.flash('success','Logged in successfully');
-            return res.redirect('/cart');
+            return res.redirect(_getRedirectUrl(req));
         },
         register(req,res){
             return res.render("auth/register")

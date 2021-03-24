@@ -33,3 +33,12 @@ Build login using passport
     -install dependencies passport passport-local express-session
 Create Order controller and link it in server.js
 Create Order view with table for customer and admin
+Place order functionality
+Show all my orders on customer orders page
+Show order on admin orders page
+Create Orders single page with status
+Order tracker
+    -dependencies moment
+Socket connection
+    -dependencies socket.io
+Build and deploy peoject
