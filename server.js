@@ -14,9 +14,14 @@ const passport = require('passport');
 const passportLocal=require('./app/config/passport-local-strategy');
 
 const customMware=require('./app/http/middlewares/flash');
+const Emitter=require('events');
+
+// Event emitter
+const eventEmitter= new Emitter();
+app.set('eventEmitter',eventEmitter);
 
 
-
+//session config
 app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
@@ -76,6 +81,27 @@ app.use(passport.setAuthenticatedUser);
 require('./routes/web')(app);
 
 // server fireup
-app.listen(PORT,()=>{
+const server=app.listen(PORT,()=>{
     console.log(`Yup! My server listening on ${PORT}`);
+})
+
+
+const io=require('socket.io')(server);
+
+io.on('connection',(socket)=>{
+  //join
+  console.log('socket connected',socket.id);
+  socket.on('join',(orderID)=>{
+    socket.join(orderID)
+    
+  })
+});
+eventEmitter.on('orderUpdated',(data)=>{
+    io.to(`order_${data.id}`).emit('orderUpdated',data)
+    console.log(data);
+})
+
+eventEmitter.on('orderPlaced',(data)=>{
+    io.to('adminRoom').emit('orderPlaced',data)
+    console.log('orderdata',data);
 })

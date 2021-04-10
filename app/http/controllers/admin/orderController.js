@@ -8,8 +8,8 @@ function orderController() {
            let order=await Order.find({ status: { $ne: 'completed' } })
            .sort('-createdAt')
            .populate('customerId', '-password')
-                // req.flash('success','Orders diplayed')
-                // return res.render('admin/orders')
+                
+                
                if(req.xhr) {
                    return res.json(order)
                    req.flash('success','Orders diplayed')
