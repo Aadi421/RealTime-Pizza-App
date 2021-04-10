@@ -2,9 +2,13 @@
 const mongoose = require('mongoose');
 
 //connect to the  database
-mongoose.connect('mongodb://localhost/pizza', {useNewUrlParser: true, useUnifiedTopology: true});
-// mongoose.connect('mongodb+srv://Aadi421:Aadi@421@cluster0.gbxms.mongodb.net/pizza?retryWrites=true&w=majority', 
-// { useNewUrlParser: true });
+
+mongoose.connect('mongodb+srv://Aadi421:<password>@cluster0.eerxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+{
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+});
+
 
 //acquire  the connection(check if is it successful)
 const db = mongoose.connection;
