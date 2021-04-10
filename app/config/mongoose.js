@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //connect to the  database
 
-mongoose.connect('mongodb+srv://Aadi421:<password>@cluster0.eerxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+mongoose.connect('mongodb+srv://Aadi421:Aadi@421@cluster0.eerxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
 {
     useNewUrlParser: true, 
     useUnifiedTopology: true
