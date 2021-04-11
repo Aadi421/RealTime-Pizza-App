@@ -16,7 +16,7 @@ const passportLocal=require('./app/config/passport-local-strategy');
 const customMware=require('./app/http/middlewares/flash');
 const Emitter=require('events');
 
-const multer=require('multer');
+// const multer=require('multer');
 
 
 // Event emitter
@@ -35,7 +35,7 @@ app.use(session({
                 maxAge:1000*60*60*24 
     },
     store: MongoStore.create({
-    mongoUrl:'mongodb://localhost/pizza',
+    mongoUrl:'mongodb+srv://Aadi421:Aadi@421@cluster0.eerxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     collectionName:'sessions',
     
     
