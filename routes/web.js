@@ -4,7 +4,7 @@ const cartController=require('../app/http/controllers/customers/cartController')
 const orderController=require('../app/http/controllers/customers/orderController')
 const adminOrderController=require('../app/http/controllers/admin/orderController')
 const statusController=require('../app/http/controllers/admin/statusController')
-
+// const menuController=require('../app/http/controllers/admin/menuController')
 const passport=require('passport');
 
 //
@@ -34,6 +34,7 @@ function initRoutes(app){
     //admin routes
     app.get('/admin/orders',admin,adminOrderController().index)
     app.post('/admin/order/status',admin,statusController().update)
+    // app.post('/upload-menu',menuController().index)
 
 
 }

@@ -48,7 +48,7 @@ function authController(){
             })
             user.save().then((user)=>{
                 req.flash('success','User created successfully');
-                return res.redirect('/')
+                return res.redirect('/login')
             }).catch((err)=>{
                     req.flash('error','Something went wrong');
                     

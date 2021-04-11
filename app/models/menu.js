@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 
 
+
 const menuSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -21,6 +22,8 @@ const menuSchema = new mongoose.Schema({
   },{
         timestamps:true
    });
+
+
 
 const MENU = mongoose.model('MENU', menuSchema);
 

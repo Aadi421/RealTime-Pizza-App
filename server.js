@@ -16,9 +16,14 @@ const passportLocal=require('./app/config/passport-local-strategy');
 const customMware=require('./app/http/middlewares/flash');
 const Emitter=require('events');
 
+const multer=require('multer');
+
+
 // Event emitter
 const eventEmitter= new Emitter();
 app.set('eventEmitter',eventEmitter);
+
+
 
 
 //session config
@@ -62,6 +67,7 @@ app.use(customMware.setFlash);
 //     next();
 // })
 //assets
+
 app.use(express.static('public'));
 app.use(expressLayout);
 //extract style and scripts from sub page into the layout
@@ -71,6 +77,7 @@ app.set('layout extractScripts', true);
 // set template engine
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'./resources/views'));
+
 
 
 app.use(passport.initialize());
