@@ -36,6 +36,9 @@ function orderController() {
 
         async index(req,res){
             const orders=await Order.find({customerId:req.user._id}).sort('-createdAt')
+            // .populate({path:'items',
+            //             populate:{path:'-._id'}
+            //             })
             return res.render('customers/orders',{
                 orders:orders,
                 moment:moment

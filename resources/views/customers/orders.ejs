@@ -26,15 +26,14 @@
                 <%if(orders.length){%>
                     <%orders.forEach((order)=>{%>
                         <tr>
-                        <%if(order.status==='completed'){%>
-                            <td class="border px-4 py-2">
-                                <a class="link line-through" href="/customer/orders/<%=order._id%>"><%=order._id%></a>
-                            </td>
-                        <%}else{%>
-                            <td class="border px-4 py-2">
-                                <a class="link" href="/customer/orders/<%=order._id%>"><%=order._id%></a>
-                            </td>
+                        <td class="border px-4 py-2">
+                        <%if(order.status==='completed'){%>                           
+                                <a class="link line-through" href="/customer/orders/<%=order._id%>"><%=order._id%></a>                            
+                        <%}else{%>                           
+                                <a class="link" href="/customer/orders/<%=order._id%>"><%=order._id%></a>                           
                         <%}%>
+                        <!-- <%=order.items._id%> -->
+                        </td>
                             
                             <td class="border px-4 py-2">
                                 <%=order.address%>
