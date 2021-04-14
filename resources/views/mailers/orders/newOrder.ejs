@@ -1,0 +1,12 @@
+<div>
+    <p> Hi &nbsp;<b><%= order.customerId.name %>!</b></p>
+    <p> <b>your pizza order just got placed </b></p>
+        <div>
+            Payment Type :: <label for=""><%=order.paymentType%></label><br>        
+            Phone :: <label for=""><%=order.phone%></label><br>
+            Address :: <label for=""><%=order.address%></label><br>
+            Order Time :: <label for=""><%=moment(order.createdAt).format('hh:mm A')%></label><br>      
+        </div>
+        <b>More about order <a href="https://pizza-app-0512.herokuapp.com/customer/orders">click here</a></b><br>
+    <b>Thanks! Hope you will enjoy your meal</b>
+</div>

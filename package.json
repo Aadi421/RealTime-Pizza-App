@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Adarsh Chaudhary",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "mongoose": "^5.12.1",
     "multer": "^1.4.2",
     "node-sass-middleware": "^0.11.0",
+    "nodemailer": "^6.5.0",
     "noty": "^3.2.0-beta-deprecated",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

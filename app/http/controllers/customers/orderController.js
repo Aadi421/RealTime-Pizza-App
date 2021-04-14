@@ -1,5 +1,6 @@
 const Order=require('../../../models/order')
 const moment=require('moment')
+const orderMailer=require('../../../../mailers/order_mailer')
 function orderController() {
     return{
         store(req,res){
@@ -18,6 +19,7 @@ function orderController() {
             order.save().then(result=>{
                 Order.populate(result, { path:'customerId' },(err, placedOrder)=>{
                     req.flash('success','Order placed successfully');
+                    orderMailer.newOrder(placedOrder);
                     delete req.session.cart;
                     //emit
                     const eventEmitter=req.app.get('eventEmitter');
