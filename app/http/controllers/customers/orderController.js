@@ -15,11 +15,13 @@ function orderController() {
                 items:req.session.cart.items,
                 phone,
                 address
+
             })
             order.save().then(result=>{
                 Order.populate(result, { path:'customerId' },(err, placedOrder)=>{
                     req.flash('success','Order placed successfully');
                     orderMailer.newOrder(placedOrder);
+                    console.log(order.items);
                     delete req.session.cart;
                     //emit
                     const eventEmitter=req.app.get('eventEmitter');
@@ -36,9 +38,7 @@ function orderController() {
 
         async index(req,res){
             const orders=await Order.find({customerId:req.user._id}).sort('-createdAt')
-            // .populate({path:'items',
-            //             populate:{path:'-._id'}
-            //             })
+           
             return res.render('customers/orders',{
                 orders:orders,
                 moment:moment

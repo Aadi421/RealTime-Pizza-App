@@ -32,7 +32,15 @@
                         <%}else{%>                           
                                 <a class="link" href="/customer/orders/<%=order._id%>"><%=order._id%></a>                           
                         <%}%>
-                        <!-- <%=order.items._id%> -->
+                       <%for(let pizza of Object.values(order.items)){%>
+                            <div>
+                                <span class="mr-3"><%=pizza.item.name%></span>
+                                <span class="mr-3"><%=pizza.item.size%></span>
+                                <span class="mr-3">Pr.<%=pizza.item.price%></span><br>
+                                <span class="mr-3">Qty:<%=pizza.qty%></span>
+                            </div>
+                       <%}%>
+                        
                         </td>
                             
                             <td class="border px-4 py-2">

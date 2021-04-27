@@ -6,11 +6,19 @@
             <%}%>
             <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                Name
+               First Name
             </label>
             <input 
-                name="name" value="<%=flash.name%>"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter your name">
+                name="firstName" value="<%=flash.firstName%>"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="First name">
+            </div>
+            <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+               Last Name
+            </label>
+            <input 
+                name="lastName" value="<%=flash.lastName%>"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Last name">
             </div>
             <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">

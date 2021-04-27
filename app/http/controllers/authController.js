@@ -19,11 +19,12 @@ function authController(){
             return res.render("auth/register")
         },
         async postRegister(req,res){
-            const {name,email,password}=req.body
+            const {firstName,lastName,email,password}=req.body
             // validate user
-            if(!name || !email || !password){
+            if(!firstName || !lastName || !email || !password){
                 req.flash('error','All field are required');
-                req.flash('name',name);
+                req.flash('firstName',firstName);
+                req.flash('lastName',lastName);
                 req.flash('email',email);
                 return res.redirect("/register")
             }
@@ -32,7 +33,8 @@ function authController(){
             User.exists({email:email},(err,result)=>{
                 if(result){
                     req.flash('error','Email already taken');
-                    req.flash('name',name);
+                    req.flash('firstName',firstName);
+                    req.flash('lastName',lastName);
                     req.flash('email',email);
                     return res.redirect("/register")
                 }
@@ -42,7 +44,8 @@ function authController(){
 
             // create user
             const user=new User({
-                name,
+                firstName,
+                lastName,
                 email,
                 password:password
             })
