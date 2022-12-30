@@ -3,7 +3,7 @@ const bodyParser  = require('body-parser');
 const app=express();
 require('dotenv').config()
 const path=require("path")
-const PORT=process.env.PORT || 8000;
+const PORT=process.env.PORT;
 const cookieParser = require('cookie-parser');
 const ejs=require("ejs");
 const expressLayout=require("express-ejs-layouts");
